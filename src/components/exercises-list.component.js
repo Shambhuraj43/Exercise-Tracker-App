@@ -29,7 +29,7 @@ export default class ExerciseList extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/exercises/')
+        axios.get('https://exercise-tracker-app-v0.herokuapp.com/exercises/')
         .then(response => {
             this.setState({exercises: response.data})
         })
@@ -40,7 +40,7 @@ export default class ExerciseList extends Component {
 
     //delete method to delete the specific exercise with 'id' from the database
     deleteExercise(id) {
-      axios.delete('http://localhost:3000/exercises/'+id)
+      axios.delete('https://exercise-tracker-app-v0.herokuapp.com/exercises/'+id)
         .then(response => { console.log(response.data)});
 
         //cheeky trick : using filter and (not returning the object with 'id')

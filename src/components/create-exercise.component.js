@@ -26,7 +26,7 @@ export default class CreateExercise extends Component {
 
   //react lifecycle method, gets called before the webpage loads
   componentDidMount() {
-    axios.get('http://localhost:3000/users/').then(response => {
+    axios.get('https://exercise-tracker-app-v0.herokuapp.com/users/').then(response => {
       if(response.data.length > 0){
         this.setState({
           users: response.data.map(user => user.username),
@@ -82,7 +82,7 @@ export default class CreateExercise extends Component {
     console.log(exercise);
     
     //send post request with the created user
-    axios.post('http://localhost:3000/exercises/add/', exercise)
+    axios.post('https://exercise-tracker-app-v0.herokuapp.com/exercises/add/', exercise)
       .then(res => console.log(res.data));
 
     
