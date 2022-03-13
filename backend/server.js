@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
-require('dotenv').config('');
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -31,15 +31,16 @@ app.listen(port, () => {
 });
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join('/build')));
-
+  app.use(express.static(path.join(__dirname,'..','build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'build', 'index.html'));
+    res.sendFile(path.join(__dirname,'..','build','index.html'));
   });
 
 }else{
   //nothing
 }
+
+
 
 
