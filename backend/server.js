@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path');
 
-require('dotenv').config();
+require('dotenv').config('./.env');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,9 +32,9 @@ app.listen(port, () => {
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('../build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'backend', 'build', 'index.html'));
-  });
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '../backend', '../build', '../public/index.html'));
+  // });
 }else{
   //nothing
 }
