@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
-require('dotenv').config('./.env');
+require('dotenv').config('');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -35,7 +35,7 @@ if(process.env.NODE_ENV === 'production'){
 
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'build', 'index.html'));
+    res.sendFile(path.join(__dirname,'build', 'index.html'));
   });
 
 }else{
