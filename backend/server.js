@@ -14,6 +14,7 @@ app.use(express.json());
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
+
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
@@ -30,11 +31,13 @@ app.listen(port, () => {
 });
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname, '/build')));
+  app.use(express.static(path.join(__dirname, 'build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'backend', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'backend', 'build', 'index.html'));
   });
 }else{
-
+  //nothing
 }
+
+
