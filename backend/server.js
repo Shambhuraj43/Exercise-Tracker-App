@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 require('dotenv').config('./.env');
 
@@ -30,12 +31,13 @@ app.listen(port, () => {
 });
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('../build'));
+  app.use(express.static(path.join('/build')));
 
 
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, '../backend', '../build', '../public/index.html'));
-  // });
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'build', 'index.html'));
+  });
+
 }else{
   //nothing
 }
